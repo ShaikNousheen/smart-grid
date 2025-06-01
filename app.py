@@ -8,8 +8,8 @@ import joblib
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("smart_grid_dataset.csv", parse_dates=["timestamp"])
-    df = df.sort_values("timestamp")
+    df = pd.read_csv("smart_grid_dataset.csv")  # ← no parse_dates yet
+    st.write("📊 Columns in CSV:", df.columns.tolist())  # Print columns
     return df
 
 # Load model
