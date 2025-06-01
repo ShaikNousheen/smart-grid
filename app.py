@@ -14,9 +14,11 @@ st.set_page_config(page_title="Smart Grid Load Forecasting Dashboard", layout="w
 # ---- Load Data ----
 @st.cache_data
 def load_data():
-    df = pd.read_csv("smart_grid_dataset.csv", parse_dates=["timestamp"])
+    df = pd.read_csv("smart_grid_dataset.csv")  # Remove parse_dates
+    df['timestamp'] = pd.to_datetime(df['date_time'])  # Replace 'date_time' with actual column name
     df = df.dropna()
     return df
+
 
 # ---- Feature Engineering ----
 def add_features(df):
