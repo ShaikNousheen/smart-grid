@@ -8,7 +8,7 @@ import joblib
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("your_data.csv", parse_dates=["timestamp"])
+    df = pd.read_csv("smart_grid_dataset.csv", parse_dates=["timestamp"])
     df = df.sort_values("timestamp")
     return df
 
