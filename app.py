@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 # ---- Load Data ----
 @st.cache_data
 def load_data():
-    df = pd.read_csv("smart_grid_dataset.csv")
+    df = pd.read_csv("smart_grid_dataset.csv", parse_dates=["Timestamp"])
     df["Timestamp"] = pd.to_datetime(df["Timestamp"], dayfirst=True, errors="coerce")
     df = df.dropna(subset=["Timestamp", "Power Consumption (kW)"])
     return df
